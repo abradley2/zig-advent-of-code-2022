@@ -55,7 +55,7 @@ pub fn main () !void {
     while (i < args.len) {
         if (parsed_args.day == null) {
             if (day_parse(input_alloc.allocator(), args[i]) catch null) |result| {
-                parsed_args.day = @intToEnum(Day, result.value);
+                parsed_args.day = @intToEnum(Day, result.value - 1);
             }
         } 
         i += 1;
@@ -64,13 +64,12 @@ pub fn main () !void {
     input_alloc.reset();
 
     if (parsed_args.day) |day| {
+        std.debug.print("Running day {}\n", .{day});
         switch (day) {
-            Day.day_01 => solutions_day_01.solve(input_alloc.allocator()),
+            Day.day_01 => try solutions_day_01.solve(input_alloc.allocator()),
             else => std.debug.print("No solution for day\n", .{}),
         }
-
-        return void;
+    } else {
+        std.debug.print("No argument for --day found", .{});
     }
-
-    std.debug.print("No argument for --day found");
 }
