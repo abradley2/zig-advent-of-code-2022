@@ -1,6 +1,7 @@
 const std = @import("std");
 const mecha = @import("mecha");
 const solutions_day_01 = @import("solutions/day_01.zig");
+const solutions_day_02 = @import("solutions/day_02.zig");
 
 const Day = enum(u8) {
     day_01,
@@ -105,6 +106,9 @@ pub fn main () !void {
             Day.day_01 => {
                 try solutions_day_01.solve_part_1(input);
                 try solutions_day_01.solve_part_2(input);
+            },
+            Day.day_02 => {
+                try solutions_day_02.solve_part_1(input);
             },
             else => std.debug.print("No solution for day\n", .{}),
         }

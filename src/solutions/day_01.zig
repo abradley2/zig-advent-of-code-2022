@@ -15,6 +15,8 @@ const input_parser = mecha.many(
 
 pub fn solve_part_2 (input_slice : []const u8) !void {
     var alloc = std.heap.ArenaAllocator.init(std.heap.page_allocator);
+    defer alloc.deinit();
+
     const parsed = try input_parser(alloc.allocator(), input_slice);
 
     var max_1 : u64 = 0;
@@ -43,6 +45,8 @@ pub fn solve_part_2 (input_slice : []const u8) !void {
 
 pub fn solve_part_1 (input_slice : []const u8) !void {
     var alloc = std.heap.ArenaAllocator.init(std.heap.page_allocator);
+    defer alloc.deinit();
+
     const parsed = try input_parser(alloc.allocator(), input_slice);
 
     var max : u64 = 0;
