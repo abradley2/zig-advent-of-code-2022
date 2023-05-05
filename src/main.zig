@@ -109,6 +109,7 @@ pub fn main () !void {
             },
             Day.day_02 => {
                 try solutions_day_02.solve_part_1(input);
+                try solutions_day_02.solve_part_2(input);
             },
             else => std.debug.print("No solution for day\n", .{}),
         }
